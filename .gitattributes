@@ -1,0 +1,5 @@
+# Keep the EdgeTX widget's bytes exactly as-is (no CRLF conversion)
+*.lua -text
+# Web assets: normalize to LF
+*.html text eol=lf
+*.md   text eol=lf
