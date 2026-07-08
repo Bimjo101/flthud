@@ -135,19 +135,19 @@
   .chip.low.warn{border-color:var(--amber); box-shadow:0 0 1.6cqh -.6cqh var(--amber)}
   .chip.low.crit{border-color:var(--red); box-shadow:0 0 1.8cqh -.6cqh var(--red)}
   /* gauge cluster */
-  .dials{display:grid; grid-template-columns:repeat(6,1fr); gap:.8cqw; padding:.2cqh 3.4cqw 4cqh; height:22cqh; align-items:center}
-  .dial{position:relative; height:100%; display:flex; align-items:center; justify-content:center}
+  .dials{display:grid; grid-template-columns:repeat(6,1fr); gap:.8cqw; padding:.4cqh 3.4cqw 4.2cqh; height:23cqh; align-items:stretch}
+  .dial{position:relative; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:.4cqh; min-height:0}
+  .dial .dl{font-family:var(--mono); font-size:1.9cqh; letter-spacing:.1em; color:var(--mut); text-transform:uppercase; line-height:1}
+  .dial .gwrap{position:relative; flex:1; min-height:0; width:100%; display:flex; align-items:center; justify-content:center}
   .dial svg{height:100%; width:auto; display:block; overflow:visible}
   .dial .face{fill:none; stroke:#182430; stroke-width:1}
   .dial .tk{stroke:#2a3a48; stroke-width:1.3} .dial .tk.maj{stroke:#43596c; stroke-width:2}
   .dial .ndl{stroke:var(--cyan); stroke-width:2.6; stroke-linecap:round; filter:drop-shadow(0 0 1.2px var(--cyan))}
   .dial .hub{fill:#0b1017; stroke:var(--cyan); stroke-width:1.6}
-  .dial.warn .ndl{stroke:var(--amber)} .dial.warn .hub{stroke:var(--amber)}
-  .dial.crit .ndl{stroke:var(--red)} .dial.crit .hub{stroke:var(--red)}
-  .dial .ctr{position:absolute; left:0; right:0; bottom:0; top:50%; display:flex; flex-direction:column; align-items:center; justify-content:center}
-  .dial .dv{font-family:var(--mono); font-size:3.8cqh; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1}
-  .dial .dv u{font-size:1.6cqh; color:var(--mut); text-decoration:none; margin-left:.12em}
-  .dial .dl{font-family:var(--mono); font-size:1.9cqh; letter-spacing:.1em; color:var(--mut); text-transform:uppercase; margin-top:.3cqh}
+  .dial.warn .ndl{stroke:var(--amber)} .dial.warn .hub{stroke:var(--amber)} .dial.warn .dl,.dial.warn .dv{color:var(--amber)}
+  .dial.crit .ndl{stroke:var(--red)} .dial.crit .hub{stroke:var(--red)} .dial.crit .dl,.dial.crit .dv{color:var(--red)}
+  .dial .dv{position:absolute; left:0; right:0; top:56%; text-align:center; font-family:var(--mono); font-size:3.5cqh; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1}
+  .dial .dv u{font-size:1.5cqh; color:var(--mut); text-decoration:none; margin-left:.1em}
   /* trim tabs on the edges (graduated ticks + moving marker) */
   .trims{position:absolute; inset:0; pointer-events:none; z-index:6}
   .trimtab{position:absolute; background:var(--track); border-radius:1cqh; box-shadow:inset 0 0 0 1px #172029}
@@ -454,9 +454,9 @@ try{document.getElementById('fsize').textContent=Math.round(atob(WIDGET_B64).len
     var ticks='';
     for(var i=0;i<=10;i++){ var a=(-135+(i/10)*270)*Math.PI/180, maj=(i%2===0), ri=maj?37:40, ro=45;
       ticks+='<line class="tk'+(maj?' maj':'')+'" x1="'+(50+ri*Math.sin(a)).toFixed(1)+'" y1="'+(50-ri*Math.cos(a)).toFixed(1)+'" x2="'+(50+ro*Math.sin(a)).toFixed(1)+'" y2="'+(50-ro*Math.cos(a)).toFixed(1)+'"/>'; }
-    el.innerHTML='<svg viewBox="0 0 100 100"><circle class="face" cx="50" cy="50" r="46"/>'+ticks+
+    el.innerHTML='<div class="dl">'+D.k+'</div><div class="gwrap"><svg viewBox="0 0 100 100"><circle class="face" cx="50" cy="50" r="46"/>'+ticks+
       '<line class="ndl" x1="50" y1="53" x2="50" y2="14" transform="rotate(-135 50 50)"/><circle class="hub" cx="50" cy="50" r="3.2"/></svg>'+
-      '<div class="ctr"><div class="dv"><span>--</span><u>'+D.u+'</u></div><div class="dl">'+D.k+'</div></div>';
+      '<div class="dv"><span>--</span><u>'+D.u+'</u></div></div>';
     dialsEl.appendChild(el);
   });
   function setDial(k,val,frac,cls){ var el=dialsEl.querySelector('[data-k="'+k+'"]'); el.className='dial'+(cls?' '+cls:'');
