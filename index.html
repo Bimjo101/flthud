@@ -407,6 +407,34 @@
     <span><i style="background:#FF3B47"></i>Critical</span><span><i style="background:#B061FF"></i>Past redline</span>
     <span><i style="background:#00E7F0"></i>System / accent</span>
   </div>
+
+  <div style="margin-top:52px; border-top:1px solid var(--edge); padding-top:42px">
+    <h3 style="font-size:clamp(20px,2.8vw,28px); font-weight:800">Where the data comes from — ESCs &amp; sensors</h3>
+    <p class="lede" style="margin-top:12px">An ESC feeds the dashboard when its telemetry protocol matches your <b style="color:var(--ink)">receiver's ecosystem</b> — it's about the protocol, not the brand. Here's the cheat sheet.</p>
+    <div class="grid g2" style="margin-top:26px">
+      <div class="card">
+        <div class="sig">Spektrum planes</div>
+        <h3>Castle Creations · Spektrum Avian</h3>
+        <p><b>Castle Creations</b> ESCs (with Spektrum telemetry enabled) and <b>Spektrum Avian SMART</b> ESCs both report <b>voltage, current, RPM and temp</b> to a Spektrum receiver — the full power strip, just like a SMART setup.</p>
+      </div>
+      <div class="card">
+        <div class="sig">The per-cell caveat</div>
+        <h3>Cells come from the battery, not the ESC</h3>
+        <p>The ESC gives pack voltage, amps, RPM and temp. The <b>4-cell row (Cel1–Cel4)</b> needs a <b>SMART battery</b> — or a dedicated cell sensor — which is a separate piece from the ESC.</p>
+      </div>
+      <div class="card">
+        <div class="sig">FrSky planes</div>
+        <h3>S.Port ESC, or add sensors</h3>
+        <p>Use an ESC with <b>S.Port</b> telemetry, or bolt on FrSky sensors — a <b>FAS current sensor</b> for amps/watts and an <b>RPM sensor</b>. Same result: FLTHUD reads it.</p>
+      </div>
+      <div class="card">
+        <div class="sig">Won't reach a plane RX</div>
+        <h3>BLHeli_32 / KISS / DShot</h3>
+        <p>Drone-style ESC telemetry is built to talk to a <b>flight controller</b>, not a plane receiver — without an FC bridging it, that data never reaches your radio. Great ESCs, wrong path.</p>
+      </div>
+    </div>
+    <div class="callout"><b>Always-works fallback:</b> any "dumb" ESC can still drive the dashboard if you add <b>standalone telemetry sensors</b> matched to your receiver brand (current, RPM, voltage/cell). FLTHUD reads those directly.</div>
+  </div>
 </div></section>
 
 <!-- ================= SENSOR GLOSSARY ================= -->
