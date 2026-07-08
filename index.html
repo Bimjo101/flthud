@@ -163,6 +163,22 @@
   .trimtab.v .mk{left:-.75cqw; right:-.75cqw; height:1.7cqh; transform:translateY(-50%)}
   .trimtab.h .mk{top:-.7cqh; bottom:-.7cqh; width:1.3cqw; transform:translateX(-50%)}
 
+  /* founder story */
+  .founder{background:linear-gradient(180deg, rgba(0,231,240,.045), rgba(6,8,12,0) 42%), rgba(10,14,20,.4); border-top:1px solid var(--edge); border-bottom:1px solid var(--edge)}
+  .founder h2{max-width:22ch}
+  .founder-grid{display:grid; gap:clamp(26px,4vw,52px); align-items:start; margin-top:36px}
+  @media(min-width:860px){ .founder-grid{grid-template-columns:300px 1fr} }
+  .founder-card{background:linear-gradient(180deg,rgba(17,26,37,.75),rgba(10,14,20,.75)); border:1px solid var(--edge); border-radius:18px; padding:22px; text-align:center; position:sticky; top:80px}
+  @media(max-width:860px){ .founder-card{position:static; max-width:320px; margin:0 auto} }
+  .avatar{width:100%; aspect-ratio:1; border-radius:14px; border:1px dashed var(--edge2); background:radial-gradient(120% 100% at 50% 0%, #12202a, #0a0e13); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--dim); margin-bottom:16px; overflow:hidden}
+  .avatar svg{width:46px; height:46px; opacity:.55} .avatar .ph{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase}
+  .founder-card .fname{font-size:21px; font-weight:800; letter-spacing:-.01em}
+  .founder-card .frole{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--cyan); margin-top:7px}
+  .founder-card .fmeta{color:var(--mut); font-size:13px; margin-top:15px; border-top:1px solid var(--edge); padding-top:15px; line-height:1.55}
+  .story p{color:#c3d0da; font-size:clamp(15px,1.55vw,17px); line-height:1.75; margin-top:18px} .story p:first-child{margin-top:0} .story p b{color:var(--ink); font-weight:600}
+  .pullquote{margin:26px 0; padding:6px 0 6px 24px; border-left:3px solid var(--cyan); font-size:clamp(18px,2.3vw,24px); line-height:1.42; font-weight:700; color:var(--ink); letter-spacing:-.01em}
+  .signature{margin-top:28px; font-family:var(--mono); font-size:14px; color:var(--mut)} .signature b{color:var(--ink)}
+
   /* generic cards / grid */
   .grid{display:grid; gap:20px}
   .g2{grid-template-columns:1fr} @media(min-width:760px){.g2{grid-template-columns:1fr 1fr}}
@@ -207,7 +223,7 @@
 <nav><div class="wrap">
   <div class="brand">FLT<b>HUD</b><small>FLTHD2 · EdgeTX</small></div>
   <div class="nav-links">
-    <a href="#compat">Receivers</a><a href="#sensors">Sensors</a><a href="#install">Install</a>
+    <a href="#story">Story</a><a href="#compat">Receivers</a><a href="#sensors">Sensors</a><a href="#install">Install</a>
     <a href="#download" class="btn" onclick="downloadWidget();return false;">Download</a>
   </div>
 </div></nav>
@@ -298,6 +314,36 @@
     <div class="card"><div class="sig">Per-cell row</div><h3>4-cell health + resistance</h3><p>With a SMART ESC: each cell's voltage, internal resistance and health color, weakest cell ringed. <b>Auto-hides</b> on planes that only report pack voltage.</p></div>
     <div class="card"><div class="sig">Bottom cluster</div><h3>Six analog gauges</h3><p>Volts, cell balance, ESC temp, mAh, peak amps, and pack health (mΩ/cell) — old-school needles that light up amber/red when a reading goes out of range.</p></div>
     <div class="card"><div class="sig">Edges &amp; alarms</div><h3>Trim tabs, voice &amp; buzz</h3><p>Graduated trim tabs (25/50/75/100% + fine center marks) on all four edges, escalating low-cell alarms, link-hold warnings, and a brownout banner.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= FOUNDER STORY ================= -->
+<section id="story" class="founder"><div class="wrap">
+  <div class="kick">The founder's story</div>
+  <h2>I built this because I was tired of picking my planes out of trees.</h2>
+  <div class="founder-grid">
+    <aside class="founder-card">
+      <!-- SWAP ME: replace this .avatar block with a headshot, e.g. <img class="avatar" src="founder.jpg" alt="Founder"> -->
+      <div class="avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        <span class="ph">Founder photo</span>
+      </div>
+      <div class="fname">[ Your Name ]</div>
+      <div class="frole">Founder · Pilot</div>
+      <div class="fmeta">Grounded more planes than I'd care to admit — so you don't have to.</div>
+    </aside>
+    <div class="story">
+      <p>I wanted to fly for as long as I can remember. For most of my life the chance just never came — no time, no money, no runway in sight. So the day it finally did, I didn't hesitate. I bought a plane, charged it up, and sent it.</p>
+      <p>Then I crashed it. Then I crashed the next one. And the one after that.</p>
+      <p>For a while I couldn't have told you why. When I finally sat down and honestly diagnosed it, two answers were staring right back at me — and both were completely avoidable.</p>
+      <p><b>The first: I never touched a simulator.</b> Not once. I tried to learn on real airframes, in real wind, with real money bolted to every wingtip. Every mistake was a repair bill. If I could tell my younger self one thing, it's this — put your first hours on a sim. It's the cheapest flight time you will ever buy.</p>
+      <p><b>The second cost me even more: I was flying blind.</b> No telemetry. No idea what my battery was doing until it quit doing it. Packs ran flat in the air and the plane simply stopped answering. Brownouts, dead-stick "landings," long walks into the tree line. Foam, hot glue, epoxy, props, servos, whole airframes — gone. Money I'm never getting back.</p>
+      <div class="pullquote">The plane knew. The voltage was sagging, the cells were falling off a cliff — the data was there the whole time. I just couldn't see it, and my radio never said a word.</div>
+      <p>That's what still gets me. The information existed on every one of those flights — locked inside the model, invisible to me. So I built the thing I wish I'd had on day one: <b>FLTHUD puts everything the plane knows right on your radio screen</b> — big, loud, and readable at a glance. Amps, real battery health, a fuel gauge, a pit timer, and alarms that shout before it's too late. The copilot I never had.</p>
+      <p>If you're standing where I stood, do yourself two favors. <b>Learn on a simulator first.</b> And <b>go the TX16S / EdgeTX route</b> — it's open, it's powerful, and it's what FLTHUD runs on. Then give it something worth listening to: a <b>Spektrum receiver like the AR631</b> hands you the full telemetry — the optics — you need to actually fly smart. Good eyes make good pilots.</p>
+      <p>I made every expensive mistake so the next person doesn't have to. That's the whole reason this dashboard exists — for people like me.</p>
+      <div class="signature">— <b>[ Your Name ]</b>, Founder of FLTHUD</div>
+    </div>
   </div>
 </div></section>
 
